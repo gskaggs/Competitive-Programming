@@ -1,39 +1,41 @@
-class Solution {
-    private static class Node {
-        public char val;
-        public Node left, right;
-        public Node(char v, Node l, Node r) {
-            val = v;
-            left = l;
-            right = r;
+import static java.lang.System.out;
+
+public class Solution {
+    private int binSearch(int[] row, int target, int hi) {
+        int lo = 0;
+        if (row[lo] > target)
+            return -1;
+        if (row[hi] <= target)
+            return hi;
+
+        while (lo + 1 < hi) {
+            int mid = (lo + hi) / 2;
+            if (row[mid] <= target)
+                lo = mid;
+            else
+                hi = mid;
         }
+
+        return lo;
     }
 
-    private static void printTree(Node root, int d) {
-        for (int i= 0; i < d; i++) {
-            System.out.print('\t');
+    public boolean solution(int[][] grid, int target) {
+        int hi = grid[0].length - 1;
+        for (int r = 0; r < grid.length; r++) {
+            int i = binSearch(grid[r], target, hi);
+            if (i == -1)
+                return false;
+            if (grid[r][i] == target)
+                return true;
+            hi = i;
         }
-        if (root == null) { 
-            System.out.println("null");
-            return;
-        }
-        
-        System.out.println(root.val + "");
-        
-        printTree(root.left, d+1);
-        printTree(root.right, d+1);
+        return false;
     }
 
-    private static Node solution(String in, String pre) {
-        if (in.length() == 0) return null;
-        char rootVal = pre.charAt(0);
-        int rootIndex = in.indexOf(rootVal);
-        return new Node(
-            rootVal,
-            solution(in.substring(0, rootIndex), pre.substring(1, rootIndex+1)),
-            solution(in.substring(rootIndex+1), pre.substring(rootIndex+1))
-        );
-    }
+    public static void main(String[] args) {
+        Solution soln = new Solution();
+        int[][] grid = { { -1, 2, 4, 6 }, { 1, 5, 9, 21 }, { 6, 8, 9, 25 }, { 8, 10, 12, 40 } };
+        out
 
     public static void main(String[] args) {
         printTree(solution("FBAEHCDIG", "HBFEACDGI"), 0);
