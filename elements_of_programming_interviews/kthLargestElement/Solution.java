@@ -18,6 +18,10 @@ public class Solution {
         return result;
     }
 
+    /**
+     * T(N) = O(N) + T(N/2)
+     * => Average case O(N) time
+     */
     public int solve(int[] A, int k) {
         /**
          * Invariants:
