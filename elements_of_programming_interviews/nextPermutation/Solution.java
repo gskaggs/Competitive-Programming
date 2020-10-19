@@ -13,10 +13,12 @@ public class Solution {
     }
 
     public static boolean nextPermutation(int[] A) {
+        // Find the first index which is not in a sorted suffix
         int i = A.length-2;
         while (i >= 0 && A[i] < A[i+1]) i--;
         if (i < 0) return false; 
 
+        // Find the smallest element in the sorted suffix which is less than A[i]
         int j = A.length-1;
         while (j > i && A[j] >= A[i]) j--;
 
