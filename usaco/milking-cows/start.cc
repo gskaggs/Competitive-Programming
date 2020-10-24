@@ -49,7 +49,7 @@ int main()
 		cin >> A[i].f >> A[i].s;
 	}
 
-	sort(A.begin(), A.end());
+	sort(all(A));
 
 	pi res = {0, 0};
 	pi cur = {-1, -1};
