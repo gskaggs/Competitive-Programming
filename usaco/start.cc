@@ -38,6 +38,7 @@ typedef vector<pi> vpi;
 
 int main()
 {
+	setIO("");
 
 	return 0;
 }
