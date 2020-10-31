@@ -40,8 +40,8 @@ typedef vector<pi> vpi;
 
 int getCost(int i) {
 	int cur = H[i];
-	if (cur < l) return abs(l - cur) * abs(l - cur);
-	if (cur > r) return abs(cur - r) * abs(cur - r);
+	if (cur < l) return (l - cur) * (l - cur);
+	if (cur > r) return (cur - r) * (cur - r);
 	return 0;
 }
 
