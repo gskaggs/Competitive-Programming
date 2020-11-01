@@ -35,7 +35,7 @@ typedef long long ll;
 typedef pair<int, int> pi;
 typedef vector<int> vi;
 typedef vector<pi> vpi;
-typedef pair<int, pi> ipi;
+typedef pair<int, pi> ipi; // {a, {b, c}} saved problem state
 
 int A, B, C;
 set<ipi> seen;
@@ -67,6 +67,7 @@ vector<ipi> next(ipi cur) {
 	return res;
 }
 
+// BFS
 void solve() {
 	queue<ipi> q;
 	q.push({0, {0, C}});
