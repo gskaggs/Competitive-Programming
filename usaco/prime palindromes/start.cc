@@ -37,7 +37,7 @@ typedef vector<int> vi;
 typedef vector<pi> vpi;
 
 int A, B;
-vi primes, ans;
+vector<ll> primes, ans;
 bitset<MAX_N> p;
 
 void sieve() {
