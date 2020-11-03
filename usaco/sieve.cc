@@ -20,7 +20,7 @@ LANG: C++
 #define umap unordered_map
 #define uset unordered_set
 #define INF 1000000007
-#define MAX_N 100000007
+#define MAX_N (size_t) 1e7
 using namespace std;
 
 void setIO(string name)
@@ -37,15 +37,30 @@ typedef vector<int> vi;
 typedef vector<pi> vpi;
 
 int N;
-bool p[MAX_N];
+
+// ll to avoid overflow in isPrime
+vector<ll> primes; 
+bitset<MAX_N> p;
+
+bool isPrime(ll n) {
+	if (n < MAX_N) return p[n];
+	trav(prime, primes) {
+		if (n % prime == 0) 
+			return false;
+		if (prime*prime > n) break;
+	}
+	return true;
+}
 
 void sieve() {
-	FOR(i, 2, N+1) p[i] = true;
+	p.set();
+	p[0] = p[1] = 0;
 
-	for(int i = 2; i*i <= N; i++) {
+	for(ll i = 2; i < MAX_N; i++) {
 		if(p[i]) {
-			for(int j = i*i; j <= N; j+=i) {
-				p[i] = false;
+			primes.pb(i);
+			for(ll j = i*i; j < MAX_N; j += i) {
+				p[j] = 0;
 			}
 		}
 	}
@@ -56,6 +71,6 @@ int main()
 	setIO("");
 	cin >> N;
 	sieve();
-	
+
 	return 0;
 }
