@@ -1,0 +1,7 @@
+6
+Killeen 500 80 .45
+Odessa 100 15 .7
+Crockett 2000 80 .9
+Baytown 500 80 .13
+Hillsboro 1600 340 .88
+Lamesa 500 80 .45
